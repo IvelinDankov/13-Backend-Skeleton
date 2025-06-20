@@ -1,10 +1,16 @@
 import express from "express";
 import routes from "./routes.js";
 import handlebars from "express-handlebars";
+import mongoose from "mongoose";
 
 const port = 3001;
 
 const app = express();
+
+mongoose
+  .connect("mongodb://localhost:27017", { dbName: "simple-app" })
+  .then(() => console.log("DB is successfully connected...."))
+  .catch((err) => console.log("DB is not connected" + err.message));
 
 app.engine(
   "hbs",

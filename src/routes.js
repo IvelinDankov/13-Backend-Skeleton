@@ -7,7 +7,7 @@ const routes = Router();
 routes.use("/users", userController);
 routes.use(homeController);
 routes.use((req, res, next) => {
-  res.render("404");
+  res.status(404).json({ message: "Page not found!" });
   next();
 });
 
