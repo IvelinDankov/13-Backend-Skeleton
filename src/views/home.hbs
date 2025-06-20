@@ -3,8 +3,14 @@
   <p>welcome to home page</p>
   <button>Read More</button>
   <ul>
-    <li>
-      <article>article</article>
-    </li>
+    {{#each products}}
+      <li>
+        <h2> {{title}} </h2>
+        <img src="{{imageUrl}}" alt="" />
+        <p> {{description}} </p>
+        <p> {{price}} </p>
+        <p> {{details}} </p>
+      </li>
+    {{/each}}
   </ul>
 </section>
