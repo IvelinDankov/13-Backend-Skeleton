@@ -1,0 +1,17 @@
+{
+  "name": "13-backend-skeleton",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --watch src/index.js"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "VD",
+  "license": "ISC",
+  "description": "Skeleton for backend server.",
+  "dependencies": {
+    "express": "^5.1.0",
+    "express-handlebars": "^8.0.1"
+  }
+}
