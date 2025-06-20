@@ -1,5 +1,6 @@
 import { Router } from "express";
 import userService from "../services/userService.js";
+import { AUTH_COOKIE } from "../utils/jwtUtil.js";
 
 const userController = Router();
 
@@ -24,6 +25,21 @@ userController.post("/register", async (req, res) => {
 });
 userController.get("/login", (req, res) => {
   res.render("user/login");
+});
+userController.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  const token = await userService.login(email, password);
+
+  // attach to cookie.
+  res.cookie(AUTH_COOKIE, token);
+
+  res.redirect("/");
+});
+userController.get("/logout", (req, res) => {
+  res.clearCookie(AUTH_COOKIE);
+
+  res.redirect("/");
 });
 
 export default userController;

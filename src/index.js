@@ -2,6 +2,8 @@ import express from "express";
 import routes from "./routes.js";
 import handlebars from "express-handlebars";
 import mongoose from "mongoose";
+import cookieParser from "cookie-parser";
+import { auth } from "./middlewares/authMiddleware.js";
 
 const port = 3001;
 
@@ -23,6 +25,8 @@ app.set("views", "src/views");
 
 app.use(express.urlencoded());
 app.use(express.static("src/public"));
+app.use(cookieParser());
+app.use(auth);
 
 app.use(routes);
 
