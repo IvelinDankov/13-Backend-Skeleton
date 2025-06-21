@@ -21,6 +21,12 @@ const plantSchema = new Schema({
     type: String,
     required: true,
   },
+  likes: [
+    {
+      type: Types.ObjectId,
+      ref: "User",
+    },
+  ],
   owner: {
     type: Types.ObjectId,
     ref: "User",

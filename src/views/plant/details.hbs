@@ -4,4 +4,13 @@
   <p> {{product.description}} </p>
   <a href="/plants/{{product.id}}/edit">Edit</a>
   <a href="/plants/{{product.id}}/delete">Delete</a>
+
+  <span> &#9829; {{likes}} </span>
+  {{#if liked}}
+    <p>You have already like this Product.</p>
+  {{else}}
+    <p class="">
+      <a href="/plants/{{product.id}}/like"> Like </a>
+    </p>
+  {{/if}}
 </section>

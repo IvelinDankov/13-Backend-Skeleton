@@ -2,8 +2,6 @@ import Plant from "../models/plantModel.js";
 
 export default {
   createPlant(title, imageUrl, description, price, sort, userId) {
-    // return  FIXME: CREATE PLANT MODEL AND HANDLE PLANT
-
     return Plant.create({
       title,
       imageUrl,
@@ -23,5 +21,11 @@ export default {
   },
   update(id, data) {
     return Plant.findByIdAndUpdate(id, data);
+  },
+  remove(id) {
+    return Plant.findByIdAndDelete(id);
+  },
+  updateLike(plantId, userId) {
+    return Plant.findByIdAndUpdate(plantId, { $push: { likes: userId } });
   },
 };

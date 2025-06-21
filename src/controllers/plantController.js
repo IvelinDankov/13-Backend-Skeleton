@@ -33,12 +33,26 @@ plantController.get("/catalog", async (req, res) => {
   res.render("plant/catalog", { products, showDescription });
 });
 
+plantController.get("/:plantId/like", async (req, res) => {
+  const plantId = req.params.plantId;
+  const userId = req.user.id;
+
+  await plantService.updateLike(plantId, userId);
+
+  res.redirect(`/plants/${plantId}/details`);
+});
+
 plantController.get("/:plantId/details", async (req, res) => {
   const plantId = req.params.plantId;
+  const userId = req.user.id;
 
   const product = await plantService.getOne(plantId);
 
-  res.render("plant/details", { product });
+  const liked = product.likes.includes(userId);
+
+  const likes = product.likes.length;
+
+  res.render("plant/details", { product, liked, likes });
 });
 plantController.get("/:plantId/edit", async (req, res) => {
   const plantId = req.params.plantId;
@@ -49,9 +63,14 @@ plantController.post("/:plantId/edit", async (req, res) => {
   const data = req.body;
   const plantId = req.params.plantId;
 
-  const product = await plantService.update(plantId, data);
+  await plantService.update(plantId, data);
 
   res.redirect(`/plants/${plantId}/details`);
+});
+plantController.get("/:plantId/delete", async (req, res) => {
+  const plantId = req.params.plantId;
+  await plantService.remove(plantId);
+  res.redirect("/plants/catalog");
 });
 
 export default plantController;
