@@ -52,7 +52,9 @@ plantController.get("/:plantId/details", async (req, res) => {
 
   const likes = product.likes.length;
 
-  res.render("plant/details", { product, liked, likes });
+  const isOwner = product.owner.equals(userId);
+
+  res.render("plant/details", { product, liked, likes, isOwner });
 });
 plantController.get("/:plantId/edit", async (req, res) => {
   const plantId = req.params.plantId;

@@ -1,16 +1,24 @@
 <section>
-  <img src="{{product.imageUrl}}" alt="{{product.title}}" />
+  <img
+    src="{{product.imageUrl}}"
+    alt="{{product.title}}"
+    style="max-width: 50%"
+  />
   <h3> {{product.title}} </h3>
   <p> {{product.description}} </p>
-  <a href="/plants/{{product.id}}/edit">Edit</a>
-  <a href="/plants/{{product.id}}/delete">Delete</a>
 
-  <span> &#9829; {{likes}} </span>
-  {{#if liked}}
-    <p>You have already like this Product.</p>
+  {{#if isOwner}}
+    <a href="/plants/{{product.id}}/edit">Edit</a>
+    <a href="/plants/{{product.id}}/delete">Delete</a>
   {{else}}
-    <p class="">
-      <a href="/plants/{{product.id}}/like"> Like </a>
-    </p>
+
+    <span> &#9829; {{likes}} </span>
+    {{#if liked}}
+      <p>You have already like this Product.</p>
+    {{else}}
+      <p class="">
+        <a href="/plants/{{product.id}}/like"> Like </a>
+      </p>
+    {{/if}}
   {{/if}}
 </section>

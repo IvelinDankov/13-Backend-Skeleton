@@ -16,6 +16,10 @@ export default {
     return Plant.find();
   },
 
+  getAllLimited() {
+    return Plant.find().sort({ _id: -1 }).limit(3);
+  },
+
   getOne(id) {
     return Plant.findById(id);
   },
@@ -27,5 +31,8 @@ export default {
   },
   updateLike(plantId, userId) {
     return Plant.findByIdAndUpdate(plantId, { $push: { likes: userId } });
+  },
+  isOwner(plantId, userId) {
+    return Plant.findById(plantId, { owner: userId });
   },
 };
