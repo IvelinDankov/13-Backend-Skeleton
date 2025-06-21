@@ -17,4 +17,8 @@ export default {
   getAll() {
     return Plant.find();
   },
+
+  getOne(id) {
+    return Plant.findOne({ id });
+  },
 };

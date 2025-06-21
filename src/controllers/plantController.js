@@ -27,4 +27,15 @@ plantController.post("/create", async (req, res) => {
   }
 });
 
+plantController.get("/catalog", async (req, res) => {
+  const products = await plantService.getAll();
+  res.render("plant/catalog", { products });
+});
+
+plantController.get("/:plantId/details", async (req, res) => {
+  const plantId = req.params.plantId;
+  const product = await plantService.getOne(plantId);
+  res.render("plant/details", { product });
+});
+
 export default plantController;
