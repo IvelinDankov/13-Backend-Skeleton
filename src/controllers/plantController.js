@@ -34,7 +34,9 @@ plantController.get("/catalog", async (req, res) => {
 
 plantController.get("/:plantId/details", async (req, res) => {
   const plantId = req.params.plantId;
+
   const product = await plantService.getOne(plantId);
+
   res.render("plant/details", { product });
 });
 

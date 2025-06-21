@@ -19,6 +19,6 @@ export default {
   },
 
   getOne(id) {
-    return Plant.findOne({ id });
+    return Plant.findById(id);
   },
 };
