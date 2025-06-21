@@ -1,0 +1,48 @@
+<fieldset>
+  <legend>
+    Edit Your Plant!
+  </legend>
+  <h2> Edit Form </h2>
+  <form method="post">
+    <input
+      type="text"
+      placeholder="Title"
+      name="title"
+      value="{{product.title}}"
+    />
+    <br />
+    <br />
+    <input
+      type="text"
+      placeholder="Image"
+      name="imageUrl"
+      value="{{product.imageUrl}}"
+    />
+    <br />
+    <br />
+    <textarea
+      name="description"
+      id="description"
+      placeholder="Description"
+    >{{product.description}}</textarea>
+    <br />
+    <br />
+    <input
+      type="number"
+      placeholder="Price"
+      name="price"
+      value="{{product.price}}"
+    />
+    <br />
+    <br />
+    <input
+      type="text"
+      placeholder="Sort"
+      name="sort"
+      value="{{product.sort}}"
+    />
+    <br />
+    <br />
+    <button type="submit"> Edit Plant </button>
+  </form>
+</fieldset>

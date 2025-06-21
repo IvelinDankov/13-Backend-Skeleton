@@ -21,4 +21,7 @@ export default {
   getOne(id) {
     return Plant.findById(id);
   },
+  update(id, data) {
+    return Plant.findByIdAndUpdate(id, data);
+  },
 };
